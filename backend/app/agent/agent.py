@@ -378,7 +378,8 @@ async def build_model_for(settings: Settings, model_id: str, uid: str | None = N
         return ChatXAI(**kwargs)
 
     if provider == Provider.GEMINI:
-        kwargs = {"model": spec["deployment"], "google_api_key": spec["api_key"]}
+        key = spec.get("api_key") or getattr(settings, "gemini_api_key", None) or os.environ.get("GEMINI_API_KEY") or ""
+        kwargs = {"model": spec["deployment"], "google_api_key": key}
         if spec.get("max_tokens"):
             kwargs["max_output_tokens"] = spec["max_tokens"]
         return ChatGoogleGenerativeAI(**kwargs)

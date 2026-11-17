@@ -69,10 +69,10 @@ class Settings(BaseSettings):
     jwt_audience: str = ""
 
     # ---- Auth (username/password accounts + signed session cookie) ----
-    session_cookie: str = "joyjoy_session"
+    session_cookie: str = "omniagent_session"
     session_ttl_hours: int = 720  # 30 days
     otp_ttl_minutes: int = 10
-    app_public_name: str = "joyjoy"
+    app_public_name: str = "OmniAgent"
 
     # ---- SMTP (password-reset OTP email). When smtp_host is unset the OTP is
     #      logged (dev) instead of emailed. ----
@@ -160,6 +160,11 @@ class Settings(BaseSettings):
     azure_openai_api_version: str = "2024-12-01-preview"
     azure_openai_deployment: str = Field(default="o4-mini", alias="AZURE_OPENAI_DEPLOYMENT_NAME")
     azure_openai_model: str = "o4-mini"
+
+    # ---- Google Gemini ----
+    gemini_api_key: str = Field(default="", alias="GEMINI_API_KEY")
+    default_model_name: str = Field(default="gemini-2.0-flash", alias="DEFAULT_MODEL")
+
     # JSON array of selectable models (legacy seed; superseded by global_models_path):
     #   [{"id","provider","deployment","endpoint","api_version","api_key"?}, ...]
     models_json: str = Field(default="", alias="JOYJOY_MODELS_JSON")
@@ -177,7 +182,7 @@ class Settings(BaseSettings):
     # (native callback) or an OTLP collector; see app/core/observability.setup_tracing.
     metrics_enabled: bool | None = Field(default=None, alias="METRICS_ENABLED")
     tracing_enabled: bool | None = Field(default=None, alias="TRACING_ENABLED")
-    otel_service_name: str = "joyjoy-backend"
+    otel_service_name: str = "omniagent-backend"
 
     @model_validator(mode="after")
     def _derive_profile_defaults(self) -> "Settings":
@@ -338,9 +343,10 @@ class Settings(BaseSettings):
         if not specs:
             s = self.normalize_model(
                 {
-                    "id": self.azure_openai_model,
-                    "provider": Provider.AZURE_OPENAI,
-                    "deployment": self.azure_openai_deployment,
+                    "id": "gemini-2.0-flash",
+                    "provider": Provider.GEMINI,
+                    "deployment": "gemini-2.0-flash",
+                    "api_key": self.gemini_api_key or os.environ.get("GEMINI_API_KEY", ""),
                 }
             )
             if s:
@@ -350,6 +356,10 @@ class Settings(BaseSettings):
     @property
     def default_model(self) -> str:
         specs = self.model_specs
+        if self.default_model_name in specs:
+            return self.default_model_name
+        if "gemini-2.0-flash" in specs:
+            return "gemini-2.0-flash"
         return self.azure_openai_model if self.azure_openai_model in specs else next(iter(specs))
 
 

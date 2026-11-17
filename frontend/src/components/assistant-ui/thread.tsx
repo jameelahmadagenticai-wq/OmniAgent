@@ -76,7 +76,7 @@ import { TooltipIconButton } from "@/components/assistant-ui/tooltip-icon-button
 import { ContextBadge, TurnSources } from "@/components/assistant-ui/turn-info";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useApprovals } from "@/runtime/JoyjoyRuntimeProvider";
+import { useApprovals } from "@/runtime/OmniAgentRuntimeProvider";
 import { useChatStore } from "@/store/chat";
 import { useSettingsStore } from "@/store/settings";
 

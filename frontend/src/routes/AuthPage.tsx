@@ -109,7 +109,7 @@ export function AuthPage() {
 				className="w-full max-w-sm space-y-4 rounded-2xl border border-border bg-sidebar p-8 shadow-lg"
 			>
 				<div className="flex flex-col items-center gap-2 text-center">
-					<img src="/joyjoy-icon.svg" alt="joyjoy" className="size-12" />
+					<img src="/omniagent-icon.svg" alt="OmniAgent" className="size-12" />
 					{/* brand name, not translated */}
 					<h1 className="font-heading text-xl font-semibold">{title}</h1>
 					<p className="text-xs text-muted-foreground">{subtitle}</p>

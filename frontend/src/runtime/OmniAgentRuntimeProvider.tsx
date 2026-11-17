@@ -227,7 +227,7 @@ function wireToUI(wire: SessionMessageWire[]): UIMessage[] {
 	return out;
 }
 
-export function JoyjoyRuntimeProvider({ children }: { children: ReactNode }) {
+export function OmniAgentRuntimeProvider({ children }: { children: ReactNode }) {
 	const [messages, setMessages] = useState<UIMessage[]>([]);
 	const [isRunning, setIsRunning] = useState(false);
 	// True while an EXISTING thread's messages are being fetched (sidebar tap) →

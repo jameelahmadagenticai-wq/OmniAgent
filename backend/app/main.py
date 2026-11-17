@@ -123,7 +123,7 @@ async def lifespan(app: FastAPI):
             await sandbox.shutdown()  # pause live sandboxes (files persist via volumes)
 
 
-app = FastAPI(title="joyjoy backend", version="0.2.0", lifespan=lifespan)
+app = FastAPI(title="OmniAgent backend", version="0.2.0", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origins,

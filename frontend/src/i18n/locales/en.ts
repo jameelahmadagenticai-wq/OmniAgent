@@ -25,7 +25,7 @@ export const en = {
 		settings: "Settings",
 	},
 	signin: {
-		title: "Sign in to joyjoy",
+		title: "Sign in to OmniAgent",
 		subtitle: "Enter your credentials to continue.",
 		username: "Username",
 		password: "Password",
@@ -35,10 +35,10 @@ export const en = {
 		failed: "Sign-in failed.",
 	},
 	auth: {
-		signinTitle: "Sign in to joyjoy",
+		signinTitle: "Sign in to OmniAgent",
 		signinSubtitle: "Enter your credentials to continue.",
 		signupTitle: "Create your account",
-		signupSubtitle: "Sign up to start using joyjoy.",
+		signupSubtitle: "Sign up to start using OmniAgent.",
 		forgotTitle: "Reset your password",
 		forgotSubtitle: "We'll email you a one-time code.",
 		resetTitle: "Enter your reset code",

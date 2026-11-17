@@ -20,7 +20,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useApprovals } from "@/runtime/JoyjoyRuntimeProvider";
+import { useApprovals } from "@/runtime/OmniAgentRuntimeProvider";
 import { useChatStore } from "@/store/chat";
 
 // Tool-RESULT payloads that flow back to the model — kept English (consistent

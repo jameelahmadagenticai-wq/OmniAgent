@@ -73,8 +73,9 @@ services:
       # CREDENTIAL_ENCRYPTION_KEY orphans every stored encrypted secret).
       JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
       CREDENTIAL_ENCRYPTION_KEY: ${CREDENTIAL_ENCRYPTION_KEY:?set CREDENTIAL_ENCRYPTION_KEY in .env}
-      # Base/global model API key — the seeded models reference ${AZURE_OPENAI_API_KEY}.
+      # Base/global model API key — the seeded models reference ${AZURE_OPENAI_API_KEY} / ${GEMINI_API_KEY}.
       AZURE_OPENAI_API_KEY: ${AZURE_OPENAI_API_KEY:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       # Agent workspace files + (in devdb mode) SQLite files, all on ${CONTAINER_DATA_DIR}
       # — the ONE var driving both the volume mount below and these three paths, so they
       # can never drift out of sync. Deliberately NOT ${WORKSPACE_ROOT}/${APP_DB_PATH}/

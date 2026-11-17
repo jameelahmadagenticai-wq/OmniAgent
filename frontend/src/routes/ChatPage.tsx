@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Thread } from "@/components/assistant-ui/thread";
 import { ConversationSidebar } from "@/components/chat/ConversationSidebar";
 import { ModelPicker } from "@/components/chat/ModelPicker";
-import { JoyjoyRuntimeProvider } from "@/runtime/JoyjoyRuntimeProvider";
+import { OmniAgentRuntimeProvider } from "@/runtime/OmniAgentRuntimeProvider";
 import { useChatStore } from "@/store/chat";
 
 export function ChatPage() {
@@ -14,7 +14,7 @@ export function ChatPage() {
 	return (
 		<div className="flex min-h-0 flex-1">
 			{conversationsOpen && <ConversationSidebar />}
-			<JoyjoyRuntimeProvider>
+			<OmniAgentRuntimeProvider>
 				{/* flex-1 → the chat reflows to full width when the sidebar collapses */}
 				<div className="flex min-h-0 flex-1 flex-col">
 					<div className="flex items-center justify-between border-b border-border px-4 py-2">
@@ -36,7 +36,7 @@ export function ChatPage() {
 						<Thread />
 					</div>
 				</div>
-			</JoyjoyRuntimeProvider>
+			</OmniAgentRuntimeProvider>
 		</div>
 	);
 }

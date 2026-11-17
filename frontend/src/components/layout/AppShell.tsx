@@ -114,7 +114,7 @@ export function AppShell() {
 					title={t("nav.home")}
 					className="mb-1 flex size-7 items-center justify-center"
 				>
-					<img src="/joyjoy-icon.svg" alt={t("nav.home")} className="size-7" />
+					<img src="/omniagent-icon.svg" alt={t("nav.home")} className="size-7" />
 				</Link>
 				<DndContext
 					sensors={sensors}
